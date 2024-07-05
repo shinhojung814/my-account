@@ -1,26 +1,20 @@
 import dynamic from 'next/dynamic'
-import { css } from '@emotion/react'
-import styled from '@emotion/styled'
 
-import Skeleton from '@shared/Skeleton'
+import { BannerSkeleton } from '@components/home/EventBanners'
+import Account from '@components/home/Account'
 
 const EventBanners = dynamic(() => import('@components/home/EventBanners'), {
   ssr: false,
-  loading: () => (
-    <Skeleton width="100%" height={100} style={{ borderRadius: 8 }} />
-  ),
+  loading: () => <BannerSkeleton />,
 })
+
+// const Account = dynamic(() => import('@components/home/Account'))
 
 export default function Home() {
   return (
-    <Container>
+    <>
       <EventBanners />
-    </Container>
+      <Account />
+    </>
   )
 }
-
-const Container = styled.div``
-
-const bold = css`
-  font-weight: bold;
-`
