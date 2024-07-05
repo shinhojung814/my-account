@@ -1,6 +1,8 @@
 import dynamic from 'next/dynamic'
 
+import Spacing from '@shared/Spacing'
 import { BannerSkeleton } from '@components/home/EventBanners'
+import { CreditScoreSkeleton } from '@components/home/CreditScore'
 import Account from '@components/home/Account'
 
 const EventBanners = dynamic(() => import('@components/home/EventBanners'), {
@@ -8,13 +10,18 @@ const EventBanners = dynamic(() => import('@components/home/EventBanners'), {
   loading: () => <BannerSkeleton />,
 })
 
-// const Account = dynamic(() => import('@components/home/Account'))
+const CreditScore = dynamic(() => import('@components/home/CreditScore'), {
+  ssr: false,
+  loading: () => <CreditScoreSkeleton />,
+})
 
 export default function Home() {
   return (
     <>
       <EventBanners />
       <Account />
+      <Spacing direction="vertical" size={8} backgroundColor="gray100" />
+      <CreditScore />
     </>
   )
 }

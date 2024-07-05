@@ -6,7 +6,7 @@ import Button from '@shared/Button'
 import Spacing from '@shared/Spacing'
 
 function Account() {
-  const hasAccount = false
+  const hasAccount = true
 
   if (hasAccount) {
     return (
@@ -14,11 +14,11 @@ function Account() {
         <Flex justify="space-between" align="center">
           <Flex direction="column">
             <Text typography="t6" color="gray600">
-              user.name의 자산
+              정토뭉 회원님의 자산
             </Text>
             <Spacing direction="vertical" size={8} />
             <Text typography="t3" bold={true}>
-              user.asset원
+              123,456 원
             </Text>
           </Flex>
           <Button>분석</Button>
