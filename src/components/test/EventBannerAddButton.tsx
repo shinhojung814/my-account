@@ -1,12 +1,9 @@
-import { doc, collection, writeBatch } from 'firebase/firestore'
+import { collection, doc, writeBatch } from 'firebase/firestore'
 
 import { store } from '@remote/firebase'
-
-import Button from '@shared/Button'
-
 import { COLLECTIONS } from '@constants/collection'
-
 import { EVENT_BANNERS } from '@/mock/banner'
+import Button from '@shared/Button'
 
 function EventBannerAddButton() {
   const handleButtonClick = async () => {

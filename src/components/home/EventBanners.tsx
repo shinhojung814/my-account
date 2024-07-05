@@ -3,11 +3,11 @@ import Image from 'next/image'
 import { css } from '@emotion/react'
 import { Swiper, SwiperSlide } from 'swiper/react'
 
-import useEventBanners from '@hooks/useEventBanners'
-import withSuspense from '@shared/hocs/withSuspense'
 import Flex from '@shared/Flex'
 import Text from '@shared/Text'
 import Skeleton from '@shared/Skeleton'
+import withSuspense from '@shared/hocs/withSuspense'
+import useEventBanners from '@components/home/hooks/useEventBanners'
 
 function EventBanners() {
   const { data } = useEventBanners()

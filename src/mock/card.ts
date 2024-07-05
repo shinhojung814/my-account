@@ -1,4 +1,4 @@
-export const card_list = [
+export const CARD_LIST = [
   {
     name: 'KB국민 My WE:SH 카드',
     corpName: 'KB국민카드',

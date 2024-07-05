@@ -1,3 +1,4 @@
 export const COLLECTIONS = {
+  CARD: 'CARD',
   EVENT_BANNER: 'EVENT_BANNER',
 }
