@@ -4,6 +4,9 @@ import { QueryClient, dehydrate, useInfiniteQuery } from 'react-query'
 import InfiniteScroll from 'react-infinite-scroll-component'
 
 import { getCards } from '@remote/card'
+
+import Top from '@shared/Top'
+import Input from '@shared/Input'
 import Badge from '@shared/Badge'
 import ListRow from '@shared/ListRow'
 
@@ -36,7 +39,15 @@ function CardListPage() {
   const cards = data?.pages.map(({ items }) => items).flat()
 
   return (
-    <div>
+    <div style={{ padding: 24 }}>
+      <Top title="추천 카드" subtitle="회원님을 위한 추천 카드입니다." />
+      <div style={{ padding: '0 24px 12px 24px' }}>
+        <Input
+          onFocus={() => {
+            navigate.push('/card/search')
+          }}
+        />
+      </div>
       <InfiniteScroll
         dataLength={cards.length}
         hasMore={hasNextPage}
