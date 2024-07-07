@@ -1,6 +1,5 @@
 import { useRouter } from 'next/router'
 
-import Flex from '@shared/Flex'
 import Text from '@shared/Text'
 import Badge from '@shared/Badge'
 import Button from '@shared/Button'
