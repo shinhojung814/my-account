@@ -1,4 +1,5 @@
 import type { AppProps } from 'next/app'
+import { SessionProvider } from 'next-auth/react'
 import { QueryClient, QueryClientProvider, Hydrate } from 'react-query'
 import { Global } from '@emotion/react'
 
@@ -7,18 +8,20 @@ import Layout from '@shared/Layout'
 
 export default function App({
   Component,
-  pageProps: { dehydratedState, ...pageProps },
+  pageProps: { dehydratedState, session, ...pageProps },
 }: AppProps) {
   const client = new QueryClient()
 
   return (
     <Layout>
-      <QueryClientProvider client={client}>
-        <Global styles={globalStyles} />
-        <Hydrate state={dehydratedState}>
-          <Component {...pageProps} />
-        </Hydrate>
-      </QueryClientProvider>
+      <Global styles={globalStyles} />
+      <SessionProvider session={session}>
+        <QueryClientProvider client={client}>
+          <Hydrate state={dehydratedState}>
+            <Component {...pageProps} />
+          </Hydrate>
+        </QueryClientProvider>
+      </SessionProvider>
     </Layout>
   )
 }
