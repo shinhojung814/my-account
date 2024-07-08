@@ -11,8 +11,8 @@ function CreditScore() {
       <Flex justify="space-between" align="center">
         <Flex direction="column">
           <Text bold={true}>
-            나의 신용도를 증명하고 <br />
-            신용점수를 올리세요
+            나의 신용도를 확인하고 <br />
+            신용 점수를 올리세요
           </Text>
           <Spacing direction="vertical" size={12} />
           <Button>내 신용점수 확인하기</Button>
