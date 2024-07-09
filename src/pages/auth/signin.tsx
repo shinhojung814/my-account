@@ -4,7 +4,7 @@ import {
   ClientSafeProvider,
   signIn,
 } from 'next-auth/react'
-import { BuiltInProviderType } from 'next-auth/providers'
+import { BuiltInProviderType } from 'next-auth'
 
 import Flex from '@shared/Flex'
 import Text from '@shared/Text'
@@ -17,11 +17,17 @@ function SigninPage({
   providers: Record<LiteralUnion<BuiltInProviderType>, ClientSafeProvider>
 }) {
   return (
-    <div>
-      <Spacing direction="vertical" size={60} />
+    <div
+      style={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: '90vh',
+      }}
+    >
       <Flex direction="column" align="center">
         <Text bold={true}>My Account</Text>
-        <Spacing direction="vertical" size={60} />
+        <Spacing direction="vertical" size={40} />
         <ul>
           {Object.values(providers).map((provider) => (
             <li key={provider.id}>
@@ -38,8 +44,6 @@ function SigninPage({
 
 export async function getServerSideProps() {
   const providers = await getProviders()
-
-  console.log('providers', providers)
 
   return {
     props: {

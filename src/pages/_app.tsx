@@ -5,6 +5,8 @@ import { Global } from '@emotion/react'
 
 import globalStyles from '@styles/globalStyles'
 import Layout from '@shared/Layout'
+import Navbar from '@shared/Navbar'
+import AuthGuard from '@components/auth/AuthGuard'
 
 export default function App({
   Component,
@@ -18,7 +20,10 @@ export default function App({
       <SessionProvider session={session}>
         <QueryClientProvider client={client}>
           <Hydrate state={dehydratedState}>
-            <Component {...pageProps} />
+            <AuthGuard>
+              <Navbar />
+              <Component {...pageProps} />
+            </AuthGuard>
           </Hydrate>
         </QueryClientProvider>
       </SessionProvider>
