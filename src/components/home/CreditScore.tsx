@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 import Flex from '@shared/Flex'
 import Text from '@shared/Text'
 import Button from '@shared/Button'
@@ -12,10 +14,12 @@ function CreditScore() {
         <Flex direction="column">
           <Text bold={true}>
             나의 신용도를 확인하고 <br />
-            신용 점수를 올리세요
+            신용점수를 올리세요
           </Text>
           <Spacing direction="vertical" size={12} />
-          <Button>내 신용점수 확인하기</Button>
+          <Link href="/credit">
+            <Button>내 신용점수 확인하기</Button>
+          </Link>
         </Flex>
         <CreditScoreChart score={500} width={80} height={80} />
       </Flex>

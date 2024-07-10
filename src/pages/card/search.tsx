@@ -9,7 +9,7 @@ import Input from '@shared/Input'
 import Badge from '@shared/Badge'
 import Spacing from '@shared/Spacing'
 import ListRow from '@shared/ListRow'
-import useDebounce from '@shared/hocs/useDebounce'
+import useDebounce from '@hooks/useDebounce'
 
 function SearchPage() {
   const navigate = useRouter()

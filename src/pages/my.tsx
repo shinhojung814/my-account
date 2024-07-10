@@ -2,8 +2,7 @@ import { signOut } from 'next-auth/react'
 
 import Flex from '@shared/Flex'
 import Button from '@shared/Button'
-import Spacing from '@shared/Spacing'
-import withAuth from '@shared/hocs/withAuth'
+import withAuth from '@hooks/withAuth'
 
 function MyPage() {
   return (

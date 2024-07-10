@@ -6,7 +6,7 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import Flex from '@shared/Flex'
 import Text from '@shared/Text'
 import Skeleton from '@shared/Skeleton'
-import withSuspense from '@shared/hocs/withSuspense'
+import withSuspense from '@hooks/withSuspense'
 import useEventBanners from '@components/home/hooks/useEventBanners'
 
 function EventBanners() {
