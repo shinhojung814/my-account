@@ -23,6 +23,7 @@
       "@styles/*": ["src/styles/*"],
       "@constants": ["src/constants/index"],
       "@constants/*": ["src/constants/*"],
+      "@contexts/*": ["src/contexts/*"],
       "@components/*": ["src/components/*"],
       "@shared/*": ["src/components/shared/*"]
     },

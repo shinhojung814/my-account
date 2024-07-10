@@ -6,6 +6,7 @@ import { COLLECTIONS } from '@constants/collection'
 import Flex from '@shared/Flex'
 import Button from '@shared/Button'
 import TextField from '@shared/TextField'
+import Preview from '@components/event/Preview'
 
 function EventForm() {
   const [formValues, setFormValues] = useState({
@@ -34,8 +35,6 @@ function EventForm() {
   }
 
   const isFormValid = Object.values(formValues).every((value) => value !== '')
-
-  console.log('date', new Date())
 
   return (
     <Flex direction="column" style={{ padding: 24 }}>
@@ -78,7 +77,9 @@ function EventForm() {
             onChange={handleFormValues}
           />
         </Flex>
-        <Flex style={{ flex: 2 }}>Preview</Flex>
+        <Flex style={{ flex: 2 }}>
+          <Preview data={formValues} mode="edit" />
+        </Flex>
       </Flex>
       <Button disabled={isFormValid === false} onClick={handleSubmit}>
         저장하기
