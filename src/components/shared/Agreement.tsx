@@ -89,7 +89,7 @@ function IconCheck({
       viewBox="0 0 512 512"
       width={24}
       height={24}
-      fill={checked ? colors.blue : colors.gray}
+      fill={checked ? colors.blue : colors.gray400}
       xmlns="http://www.w3.org/2000/svg"
     >
       <path d="M335 175L224 286.1L176.1 239c-9.375-9.375-24.56-9.375-33.94 0s-9.375 24.56 0 33.94l64 64C211.7 341.7 217.8 344 224 344s12.28-2.344 16.97-7.031l128-128c9.375-9.375 9.375-24.56 0-33.94S344.4 165.7 335 175z" />
