@@ -33,7 +33,7 @@ function SigninPage({
             <li key={provider.id}>
               <Button
                 onClick={() => signIn(provider.id, { callbackUrl: '/' })}
-              >{`${provider.name} Sign In`}</Button>
+              >{`${provider.name} 로그인`}</Button>
             </li>
           ))}
         </ul>

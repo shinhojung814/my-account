@@ -20,7 +20,7 @@ function Navbar() {
         <Link href="/my">
           <Image
             src={session.user?.image ?? ''}
-            alt={session.user?.name as string}
+            alt={(session.user?.name as string) ?? 'user-image'}
             width={40}
             height={40}
             style={{ borderRadius: '100%' }}
