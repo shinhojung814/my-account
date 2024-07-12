@@ -52,7 +52,7 @@ function TransactionForm() {
 
     const newTransaction = {
       ...formValues,
-      amount: Number(),
+      amount: Number(formValues.amount),
       date: new Date().toISOString(),
       balance,
     } as Transaction
