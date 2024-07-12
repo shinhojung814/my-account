@@ -9,7 +9,7 @@ const FixedBottomButton = dynamic(() => import('@shared/FixedBottomButton'), {
   ssr: false,
 })
 
-function Terms() {
+function Terms({ onNext }: { onNext: (termsIds: string[]) => void }) {
   const [termsAgreed, setTermsAgreed] = useState(() =>
     generateInitialValues(TERMS_LIST),
   )
@@ -59,7 +59,11 @@ function Terms() {
       <FixedBottomButton
         label="약관 동의"
         disabled={allMandatoryAgreed === false}
-        onClick={() => {}}
+        onClick={() => {
+          onNext(
+            termsAgreed.filter((terms) => terms.checked).map(({ id }) => id),
+          )
+        }}
       />
     </div>
   )
