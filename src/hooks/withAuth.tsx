@@ -6,11 +6,11 @@ function withAuth<Props = Record<string, never>>(
   WrappedComponent: ComponentType<Props>,
 ) {
   return function AuthenticatedComponent(props: Props) {
-    const router = useRouter()
+    const navigate = useRouter()
     const { data, status } = useSession()
 
     if (status !== 'loading' && data == null) {
-      router.replace('/auth/signin')
+      navigate.replace('/auth/signin')
 
       return null
     }

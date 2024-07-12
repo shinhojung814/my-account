@@ -1,4 +1,4 @@
-import { Term } from '@models/account'
+import { Term, AccountForm } from '@models/account'
 
 export const TERMS_LIST = [
   {
@@ -20,3 +20,30 @@ export const TERMS_LIST = [
     mandatory: false,
   },
 ] as Term[]
+
+export const FORMS = [
+  {
+    id: 'name',
+    label: '한글명',
+    required: true,
+    type: 'TEXT_FIELD',
+  },
+  {
+    id: 'phone',
+    label: '전화번호',
+    required: true,
+    type: 'TEXT_FIELD',
+  },
+  {
+    id: 'email',
+    label: '이메일',
+    required: true,
+    type: 'TEXT_FIELD',
+  },
+  {
+    id: 'accountName',
+    label: '계좌명',
+    required: true,
+    type: 'TEXT_FIELD',
+  },
+] as AccountForm[]

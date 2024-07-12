@@ -21,7 +21,7 @@ const FixedBottomButton = dynamic(() => import('@shared/FixedBottomButton'), {
 })
 
 function CreditPage() {
-  const router = useRouter()
+  const navigate = useRouter()
   const user = useUser()
   const { open } = useAlertContext()
   const { data } = useCredit()
@@ -33,15 +33,15 @@ function CreditPage() {
         description:
           '정확한 신용 정보를 확인하기 위해 로그인을 먼저 진행해주세요.',
         onButtonClick: () => {
-          router.push('/auth/signin')
+          navigate.push('/auth/signin')
         },
       })
 
       return
     }
 
-    router.push('/credit/check')
-  }, [user, router, open])
+    navigate.push('/credit/check')
+  }, [user, navigate, open])
 
   return data != null ? (
     <div>
@@ -64,7 +64,7 @@ function CreditPage() {
           }
           withArrow={true}
           onClick={() => {
-            router.push('/card')
+            navigate.push('/card')
           }}
         />
       </ul>

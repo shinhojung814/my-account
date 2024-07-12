@@ -10,9 +10,9 @@ import Button from '@shared/Button'
 import { colors } from '@styles/colorPalette'
 
 function Navbar() {
-  const router = useRouter()
+  const navigate = useRouter()
   const { data: session } = useSession()
-  const showSignButton = ['/auth/signin'].includes(router.pathname) === false
+  const showSignButton = ['/auth/signin'].includes(navigate.pathname) === false
 
   const renderButton = useCallback(() => {
     if (session != null) {

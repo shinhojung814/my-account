@@ -39,7 +39,7 @@ function CardListPage() {
   const cards = data?.pages.map(({ items }) => items).flat()
 
   return (
-    <div style={{ padding: 24 }}>
+    <div>
       <Top title="추천 카드" subtitle="회원님을 위한 추천 카드입니다." />
       <div style={{ padding: '0 24px 12px 24px' }}>
         <Input

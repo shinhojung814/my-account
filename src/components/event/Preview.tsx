@@ -14,7 +14,7 @@ const FixedBottomButton = dynamic(() => import('@shared/FixedBottomButton'), {
 })
 
 function Preview({ data, mode }: { data: Event; mode: 'preview' | 'edit' }) {
-  const router = useRouter()
+  const navigate = useRouter()
 
   const { title, subtitle, contents, buttonLabel, link } = data
 
@@ -33,7 +33,7 @@ function Preview({ data, mode }: { data: Event; mode: 'preview' | 'edit' }) {
         <FixedBottomButton
           label={buttonLabel}
           onClick={() => {
-            router.push(link)
+            navigate.push(link)
           }}
         />
       ) : (
