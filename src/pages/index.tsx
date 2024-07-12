@@ -1,5 +1,10 @@
+import { GetServerSidePropsContext } from 'next'
+import { getSession } from 'next-auth/react'
 import dynamic from 'next/dynamic'
+import { QueryClient, dehydrate } from 'react-query'
 
+import { User } from '@models/user'
+import { getAccount } from '@remote/account'
 import Spacing from '@shared/Spacing'
 import { BannerSkeleton } from '@components/home/EventBanners'
 import { CreditScoreSkeleton } from '@components/home/CreditScore'
@@ -32,4 +37,26 @@ export default function Home() {
       <CardList />
     </>
   )
+}
+
+export async function getServerSideProps(context: GetServerSidePropsContext) {
+  const session = await getSession(context)
+
+  if (session != null && session.user != null) {
+    const client = new QueryClient()
+
+    await client.prefetchQuery(['account', (session.user as User).id], () =>
+      getAccount((session.user as User).id),
+    )
+
+    return {
+      props: {
+        dehydratedState: JSON.parse(JSON.stringify(dehydrate(client))),
+      },
+    }
+  }
+
+  return {
+    props: {},
+  }
 }

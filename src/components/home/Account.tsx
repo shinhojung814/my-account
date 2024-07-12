@@ -1,56 +1,83 @@
+import Link from 'next/link'
 import Image from 'next/image'
 
+import useUser from '@hooks/useUser'
+import useAccount from '@hooks/useAccount'
+import addDelimiter from '@utils/addDelimiter'
 import Flex from '@shared/Flex'
 import Text from '@shared/Text'
 import Button from '@shared/Button'
 import Spacing from '@shared/Spacing'
 
 function Account() {
-  const hasAccount = true
+  const user = useUser()
+  const { data: account } = useAccount()
 
-  if (hasAccount) {
+  if (account == null) {
     return (
       <div style={{ padding: 24 }}>
-        <Flex justify="space-between" align="center">
+        <Flex justify="space-between">
           <Flex direction="column">
-            <Text typography="t6" color="gray600">
-              정토뭉 회원님의 자산
+            <Text bold={true} style={{ whiteSpace: 'pre-wrap' }}>
+              {`계좌 개설이 \n더 쉽고 빨라졌어요.`}
+            </Text>
+            <Spacing direction="vertical" size={4} />
+            <Text
+              typography="t6"
+              color="gray700"
+              style={{ whiteSpace: 'pre-wrap' }}
+            >
+              {`간편하게 계좌를 \n개설해보세요.`}
             </Text>
             <Spacing direction="vertical" size={8} />
-            <Text typography="t3" bold={true}>
-              123,456 원
-            </Text>
+            <Link href="/account/new">
+              <Button>1분 만에 계좌 개설</Button>
+            </Link>
           </Flex>
-          <Button>분석</Button>
+          <Image
+            src="https://cdn2.iconfinder.com/data/icons/new-year-resolutions/64/resolutions-16-512.png"
+            alt="asset"
+            width={80}
+            height={80}
+          />
         </Flex>
       </div>
     )
   }
 
-  const AccountStatus = 'READY'
-  const title =
-    AccountStatus === 'READY'
-      ? '계좌의 개설이 \n진행 중입니다.'
-      : '간편하게 계좌를 \n개설해보세요.'
-  const buttonLabel =
-    AccountStatus === 'READY' ? '이어서 신청하기' : '새로운 계좌 신청'
+  if (account.status === 'READY') {
+    return (
+      <div style={{ padding: 24 }}>
+        <Flex justify="space-between">
+          <Flex direction="column">
+            <Text bold={true} style={{ whiteSpace: 'pre-wrap' }}>
+              신청하신 계좌의 개설이 진행 중입니다.
+            </Text>
+          </Flex>
+          <Image
+            src="https://cdn2.iconfinder.com/data/icons/new-year-resolutions/64/resolutions-16-512.png"
+            alt="asset"
+            width={80}
+            height={80}
+          />
+        </Flex>
+      </div>
+    )
+  }
 
   return (
     <div style={{ padding: 24 }}>
-      <Flex justify="space-between">
+      <Flex justify="space-between" align="center">
         <Flex direction="column">
-          <Text bold={true} style={{ whiteSpace: 'pre-wrap' }}>
-            {title}
+          <Text typography="t6" color="gray800" bold={true}>
+            {user?.name} 회원님의 자산
           </Text>
           <Spacing direction="vertical" size={8} />
-          <Button>{buttonLabel}</Button>
+          <Text typography="t3" bold={true}>
+            {addDelimiter(account.balance)} 원
+          </Text>
         </Flex>
-        <Image
-          src="https://cdn2.iconfinder.com/data/icons/new-year-resolutions/64/resolutions-16-512.png"
-          alt="asset"
-          width={80}
-          height={80}
-        />
+        <Button>분석</Button>
       </Flex>
     </div>
   )

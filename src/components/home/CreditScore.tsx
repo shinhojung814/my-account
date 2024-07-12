@@ -25,7 +25,7 @@ function CreditScore() {
           </Text>
           <Spacing direction="vertical" size={12} />
           <Link href="/credit">
-            <Button>내 신용점수 확인하기</Button>
+            <Button>내 신용점수 확인</Button>
           </Link>
         </Flex>
         <CreditScoreChart
