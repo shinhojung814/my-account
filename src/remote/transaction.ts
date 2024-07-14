@@ -12,7 +12,11 @@ import {
 } from 'firebase/firestore'
 
 import { COLLECTIONS } from '@constants/collection'
-import { Transaction, TransactionType } from '@models/transaction'
+import {
+  Transaction,
+  TransactionType,
+  TransactionFilterType,
+} from '@models/transaction'
 import { store } from '@remote/firebase'
 
 export function createTransaction(newTransaction: Transaction) {
@@ -22,25 +26,13 @@ export function createTransaction(newTransaction: Transaction) {
 export async function getTransactions({
   userId,
   pageParam,
+  filter = 'all',
 }: {
   userId: string
   pageParam?: QuerySnapshot<TransactionType>
+  filter?: TransactionFilterType
 }) {
-  const transactionQuery =
-    pageParam == null
-      ? query(
-          collection(store, COLLECTIONS.TRANSACTION),
-          where('userId', '==', userId),
-          orderBy('date', 'desc'),
-          limit(15),
-        )
-      : query(
-          collection(store, COLLECTIONS.TRANSACTION),
-          where('userId', '==', userId),
-          orderBy('date', 'desc'),
-          startAfter(pageParam),
-          limit(15),
-        )
+  const transactionQuery = generateQuery({ userId, pageParam, filter })
 
   const transactionSnapshot = await getDocs(transactionQuery)
 
@@ -53,4 +45,35 @@ export async function getTransactions({
   }))
 
   return { items, lastVisible }
+}
+
+function generateQuery({
+  userId,
+  pageParam,
+  filter,
+}: {
+  userId: string
+  pageParam?: QuerySnapshot<TransactionType>
+  filter?: TransactionFilterType
+}) {
+  const baseQuery = query(
+    collection(store, COLLECTIONS.TRANSACTION),
+    where('userId', '==', userId),
+    orderBy('date', 'desc'),
+    limit(15),
+  )
+
+  if (filter !== 'all') {
+    if (pageParam == null) {
+      return query(baseQuery, where('type', '==', filter))
+    }
+
+    return query(baseQuery, startAfter(pageParam), where('type', '==', filter))
+  } else {
+    if (pageParam == null) {
+      return baseQuery
+    }
+
+    return query(baseQuery, startAfter(pageParam))
+  }
 }
