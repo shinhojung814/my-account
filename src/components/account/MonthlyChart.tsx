@@ -21,8 +21,8 @@ interface MonthlyChartProps {
 
 const verticalMargin = 120
 
-const getX = (data: ChartData) => data.date
-const getY = (data: ChartData) => data.balance
+const getX = (d: ChartData) => d.date
+const getY = (d: ChartData) => d.balance
 const formatDate = (date: string) => format(parseISO(date), 'M월')
 
 function MonthlyChart({ chartData, width, height }: MonthlyChartProps) {

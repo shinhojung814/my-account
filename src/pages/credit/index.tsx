@@ -79,7 +79,7 @@ function CreditPage() {
           <br /> 조회하고 관리하기
         </Text>
         <Spacing size={10} />
-        <CreditScoreChart score={619} />
+        <CreditScoreChart score={0} />
       </Flex>
       <Spacing size={80} />
       <ul>
