@@ -81,8 +81,7 @@ function PiggyBank() {
           }
           withArrow={true}
           onClick={() => {
-            // TODO: 저금통 리스트 + 상세 정보 페이지
-            // navigate.push('/account/piggybank/new')
+            navigate.push('/account/piggybank')
           }}
         />
       </ul>

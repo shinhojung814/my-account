@@ -1,4 +1,5 @@
 import { useState, useMemo, useCallback, ChangeEvent } from 'react'
+import { useRouter } from 'next/router'
 import dynamic from 'next/dynamic'
 import { useMutation } from 'react-query'
 import { format } from 'date-fns'
@@ -23,7 +24,7 @@ function NewPiggyBankPage() {
   })
 
   const user = useUser()
-
+  const navigate = useRouter()
   const { open } = useAlertContext()
 
   const minDate = useMemo(() => format(new Date(), 'yyyy-MM-dd'), [])
@@ -35,7 +36,7 @@ function NewPiggyBankPage() {
         open({
           title: '새로운 저금통이 추가되었습니다.',
           onButtonClick: () => {
-            window.history.back()
+            navigate.push('/account')
           },
         })
       },

@@ -9,8 +9,6 @@ const PiggyBank = dynamic(() => import('@components/account/PiggyBank'))
 const Transactions = dynamic(() => import('@components/account/Transactions'))
 
 function AccountPage() {
-  console.log('generateCategoryChartData', generateCategoryChartData())
-
   return (
     <div style={{ padding: '24px 12px' }}>
       <PiggyBank />

@@ -12,7 +12,6 @@ import {
 import { store } from '@remote/firebase'
 import { PiggyBank } from '@models/piggybank'
 import { COLLECTIONS } from '@constants/collection'
-import { isNull } from 'util'
 
 export async function getPiggyBank(userId: string) {
   const snapshot = await getDocs(
@@ -21,7 +20,6 @@ export async function getPiggyBank(userId: string) {
       where('userId', '==', userId),
       where('endDate', '>=', new Date()),
       orderBy('endDate', 'asc'),
-      limit(1),
     ),
   )
 
