@@ -1,4 +1,5 @@
 import dynamic from 'next/dynamic'
+import { useRouter } from 'next/router'
 
 import withAuth from '@hooks/withAuth'
 import Spacing from '@shared/Spacing'
@@ -9,9 +10,12 @@ const PiggyBank = dynamic(() => import('@components/account/PiggyBank'))
 const Transactions = dynamic(() => import('@components/account/Transactions'))
 
 function AccountPage() {
+  const router = useRouter()
+  const pathname = router.pathname
+
   return (
     <div style={{ padding: '24px 12px' }}>
-      <PiggyBank />
+      <PiggyBank pathname={pathname} />
       <Spacing
         direction="vertical"
         size={8}

@@ -20,7 +20,7 @@ const LAST_STEP = 2
 
 function AccountNewPage({ initialStep }: { initialStep: number }) {
   const [step, setStep] = useState(initialStep)
-  const navigate = useRouter()
+  const router = useRouter()
   const user = useUser()
 
   return (
@@ -60,7 +60,7 @@ function AccountNewPage({ initialStep }: { initialStep: number }) {
           <FixedBottomButton
             label="확인"
             onClick={() => {
-              navigate.push('/')
+              router.push('/')
             }}
           />
         </>

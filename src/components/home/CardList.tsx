@@ -9,7 +9,7 @@ import withSuspense from '@hooks/withSuspense'
 import useCards from '@components/home/hooks/useCards'
 
 function CardList() {
-  const navigate = useRouter()
+  const router = useRouter()
   const { data } = useCards()
 
   const isShowMoreButton = data?.items.length ?? 0 > 5
@@ -37,7 +37,7 @@ function CardList() {
                 card.payback != null ? <Badge label={card.payback} /> : null
               }
               withArrow={true}
-              onClick={() => navigate.push(`/card/${card.id}`)}
+              onClick={() => router.push(`/card/${card.id}`)}
             />
           )
         })}
@@ -47,7 +47,7 @@ function CardList() {
           <Button
             size="medium"
             full={true}
-            onClick={() => navigate.push('/card')}
+            onClick={() => router.push('/card')}
           >
             더 보기
           </Button>

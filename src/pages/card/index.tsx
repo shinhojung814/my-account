@@ -11,7 +11,7 @@ import Badge from '@shared/Badge'
 import ListRow from '@shared/ListRow'
 
 function CardListPage() {
-  const navigate = useRouter()
+  const router = useRouter()
 
   const {
     data,
@@ -44,7 +44,7 @@ function CardListPage() {
       <div style={{ padding: '0 24px 12px 24px' }}>
         <Input
           onFocus={() => {
-            navigate.push('/card/search')
+            router.push('/card/search')
           }}
         />
       </div>
@@ -70,7 +70,7 @@ function CardListPage() {
                   card.payback != null ? <Badge label={card.payback} /> : null
                 }
                 withArrow={true}
-                onClick={() => navigate.push(`/card/${card.id}`)}
+                onClick={() => router.push(`/card/${card.id}`)}
               />
             )
           })}

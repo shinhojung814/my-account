@@ -27,14 +27,16 @@ export async function getPiggyBank(userId: string) {
     return null
   }
 
-  const piggybank = snapshot.docs[0].data()
+  const piggybanks = snapshot.docs.map((doc) => {
+    return {
+      id: doc.id,
+      ...(doc.data() as PiggyBank),
+      startDate: doc.data().startDate.toDate(),
+      endDate: doc.data().endDate.toDate(),
+    }
+  })
 
-  return {
-    id: snapshot.docs[0].id,
-    ...(piggybank as PiggyBank),
-    startDate: piggybank.startDate.toDate(),
-    endDate: piggybank.endDate.toDate(),
-  }
+  return piggybanks
 }
 
 export function createPiggyBank(newPiggyBank: PiggyBank) {

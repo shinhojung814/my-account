@@ -12,7 +12,7 @@ import ListRow from '@shared/ListRow'
 import useDebounce from '@hooks/useDebounce'
 
 function SearchPage() {
-  const navigate = useRouter()
+  const router = useRouter()
 
   const [keyword, setKeyword] = useState('')
 
@@ -68,7 +68,7 @@ function SearchPage() {
                   card.payback != null ? <Badge label={card.payback} /> : null
                 }
                 withArrow={true}
-                onClick={() => navigate.push(`/card/${card.id}`)}
+                onClick={() => router.push(`/card/${card.id}`)}
               />
             )
           })}

@@ -24,7 +24,7 @@ function NewPiggyBankPage() {
   })
 
   const user = useUser()
-  const navigate = useRouter()
+  const router = useRouter()
   const { open } = useAlertContext()
 
   const minDate = useMemo(() => format(new Date(), 'yyyy-MM-dd'), [])
@@ -36,7 +36,7 @@ function NewPiggyBankPage() {
         open({
           title: '새로운 저금통이 추가되었습니다.',
           onButtonClick: () => {
-            navigate.push('/account')
+            router.push('/account')
           },
         })
       },
