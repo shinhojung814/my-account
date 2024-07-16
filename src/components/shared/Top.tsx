@@ -1,7 +1,7 @@
 import { css } from '@emotion/react'
 
-import Flex from '@/components/shared/Flex'
-import Text from '@/components/shared/Text'
+import Flex from '@shared/Flex'
+import Text from '@shared/Text'
 
 interface TopProps {
   title: string

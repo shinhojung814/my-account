@@ -1,6 +1,6 @@
-import Flex from '@/components/shared/Flex'
-import Text from '@/components/shared/Text'
-import Spacing from '@/components/shared/Spacing'
+import Flex from '@shared/Flex'
+import Text from '@shared/Text'
+import Spacing from '@shared/Spacing'
 
 function FullPageLoader({ message }: { message?: string }) {
   return (

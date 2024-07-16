@@ -1,9 +1,9 @@
 import { css, SerializedStyles } from '@emotion/react'
 
-import Flex from '@/components/shared/Flex'
-import Text from '@/components/shared/Text'
-import Spacing from '@/components/shared/Spacing'
-import Skeleton from '@/components/shared/Skeleton'
+import Flex from '@shared/Flex'
+import Text from '@shared/Text'
+import Spacing from '@shared/Spacing'
+import Skeleton from '@shared/Skeleton'
 
 interface ListRowProps {
   as?: 'div' | 'li'

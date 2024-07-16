@@ -1,10 +1,10 @@
 import styled from '@emotion/styled'
 
 import { colors } from '@styles/colorPalette'
-import Text from '@/components/shared/Text'
-import Flex from '@/components/shared/Flex'
-import Button from '@/components/shared/Button'
-import Dimmed from '@/components/shared/Dimmed'
+import Text from '@shared/Text'
+import Flex from '@shared/Flex'
+import Button from '@shared/Button'
+import Dimmed from '@shared/Dimmed'
 
 interface AlertProps {
   open?: boolean

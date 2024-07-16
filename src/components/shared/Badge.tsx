@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 
-import Text from '@/components/shared/Text'
+import Text from '@shared/Text'
 import { colors } from '@styles/colorPalette'
 
 interface BadgeProps {

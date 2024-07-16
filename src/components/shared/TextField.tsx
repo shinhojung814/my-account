@@ -5,8 +5,8 @@ import {
   FocusEventHandler,
 } from 'react'
 
-import Text from '@/components/shared/Text'
-import Input from '@/components/shared/Input'
+import Text from '@shared/Text'
+import Input from '@shared/Input'
 
 interface TextFieldProps extends InputHTMLAttributes<HTMLInputElement> {
   label?: React.ReactNode

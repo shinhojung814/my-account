@@ -1,9 +1,9 @@
 import { forwardRef, SelectHTMLAttributes } from 'react'
 import styled from '@emotion/styled'
 
-import Flex from '@/components/shared/Flex'
-import Text from '@/components/shared/Text'
-import Spacing from '@/components/shared/Spacing'
+import Flex from '@shared/Flex'
+import Text from '@shared/Text'
+import Spacing from '@shared/Spacing'
 import { colors } from '@styles/colorPalette'
 
 export interface Option {

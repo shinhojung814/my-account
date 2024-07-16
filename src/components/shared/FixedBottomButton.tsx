@@ -2,7 +2,7 @@ import { createPortal } from 'react-dom'
 import { css, keyframes } from '@emotion/react'
 import styled from '@emotion/styled'
 
-import Button from '@/components/shared/Button'
+import Button from '@shared/Button'
 import { colors } from '@styles/colorPalette'
 
 interface FixedBottomButtonProps {
