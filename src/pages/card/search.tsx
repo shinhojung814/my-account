@@ -39,13 +39,13 @@ function SearchPage() {
   }, [])
 
   return (
-    <div style={{ padding: 24 }}>
+    <div>
       <Top title="추천 카드" subtitle="회원님을 위한 추천 카드입니다." />
       <div style={{ padding: '0 24px 12px 24px' }}>
         <Input ref={inputRef} value={keyword} onChange={handleKeyword} />
       </div>
       {keyword !== '' && data?.length === 0 ? (
-        <div style={{ display: 'flex', flexDirection: 'column', padding: 24 }}>
+        <div style={{ display: 'flex', flexDirection: 'column', padding: 36 }}>
           <Text>입력하신 검색어와 일치하는 카드가 없습니다.</Text>
           <Spacing direction="vertical" size={4} />
           <Text typography="t6" color="gray700">

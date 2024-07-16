@@ -28,7 +28,7 @@ export async function getTerms(userId: string) {
 
   return {
     id: snapshot.id,
-    ...(snapshot.data() as { userId: string; termIds: string[] }),
+    ...(snapshot.data() as { userId: string; termsIds: string[] }),
   }
 }
 
