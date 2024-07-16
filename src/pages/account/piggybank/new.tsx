@@ -77,7 +77,7 @@ function NewPiggyBankPage() {
   }
 
   return (
-    <div>
+    <div style={{ padding: 24 }}>
       <Flex direction="column">
         <TextField
           name="name"
@@ -102,7 +102,7 @@ function NewPiggyBankPage() {
         />
       </Flex>
       <FixedBottomButton
-        label="저금통 생성"
+        label="저금통 만들기"
         onClick={handleSubmit}
         disabled={isLoading === true}
       />
