@@ -1,10 +1,10 @@
 import { useMemo } from 'react'
 import { GetServerSidePropsContext } from 'next'
 import { getSession } from 'next-auth/react'
-import { QueryClient, dehydrate, useQuery } from 'react-query'
+import { QueryClient, dehydrate, useQuery, useMutation } from 'react-query'
 
 import { User } from '@models/user'
-import { getTerms } from '@remote/account'
+import { getTerms, updateTerms } from '@remote/account'
 import { TERMS_LIST } from '@constants/account'
 import useUser from '@hooks/useUser'
 import Top from '@shared/Top'
@@ -14,11 +14,22 @@ import ListRow from '@shared/ListRow'
 
 function TermsPage() {
   const user = useUser()
+  const client = new QueryClient()
   const { data } = useQuery(
     ['terms', user?.id],
     () => getTerms(user?.id as string),
     {
       enabled: user != null,
+    },
+  )
+
+  const { mutate, isLoading } = useMutation(
+    (termsIds: string[]) => updateTerms(user?.id as string, termsIds),
+    {
+      onSuccess: () => {
+        client.invalidateQueries(['terms', user?.id])
+      },
+      onError: () => {},
     },
   )
 
@@ -38,6 +49,16 @@ function TermsPage() {
 
     return { mandatoryTerms, optionalTerms }
   }, [data])
+
+  const handleDisagree = (selectedTermsId: string) => {
+    const updatedTermsIds = data?.termsIds.filter(
+      (termsId) => selectedTermsId !== termsId,
+    )
+
+    if (updatedTermsIds != null) {
+      mutate(updatedTermsIds)
+    }
+  }
 
   return (
     <div>
@@ -60,7 +81,14 @@ function TermsPage() {
               contents={
                 <ListRow.Texts title={`[선택] ${terms.title}`} subtitle="" />
               }
-              right={<Button>철회</Button>}
+              right={
+                <Button
+                  onClick={() => handleDisagree(terms.id)}
+                  disabled={isLoading === true}
+                >
+                  철회
+                </Button>
+              }
             />
           ))}
         </ul>
