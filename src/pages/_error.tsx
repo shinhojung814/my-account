@@ -43,3 +43,5 @@ Error.getInitialProps = ({ res, err }: NextPageContext) => {
 
   return { statusCode }
 }
+
+export default Error

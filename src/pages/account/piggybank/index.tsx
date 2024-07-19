@@ -3,7 +3,9 @@ import dynamic from 'next/dynamic'
 
 import PiggyBank from '@components/account/PiggyBank'
 
-const FixedBottomButton = dynamic(() => import('@shared/FixedBottomButton'))
+const FixedBottomButton = dynamic(() => import('@shared/FixedBottomButton'), {
+  ssr: false,
+})
 
 function PiggyBankPage() {
   const router = useRouter()
