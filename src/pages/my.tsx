@@ -11,18 +11,6 @@ function MyPage() {
   const router = useRouter()
 
   return (
-    // <div
-    //   style={{
-    //     display: 'flex',
-    //     justifyContent: 'center',
-    //     alignItems: 'center',
-    //     height: '80vh',
-    //   }}
-    // >
-    //   <Flex justify="center">
-    //     <Button onClick={() => signOut({ callbackUrl: '/' })}>로그아웃</Button>
-    //   </Flex>
-    // </div>
     <div>
       <Spacing direction="vertical" size={100} />
       <Flex justify="center">
