@@ -54,15 +54,12 @@ function NewPiggyBankPage() {
     },
   )
 
-  const handleFormValues = useCallback(
-    (e: ChangeEvent<HTMLInputElement>) => {
-      setFormValues((prevFormValues) => ({
-        ...prevFormValues,
-        [e.target.name]: e.target.value,
-      }))
-    },
-    [formValues],
-  )
+  const handleFormValues = useCallback((e: ChangeEvent<HTMLInputElement>) => {
+    setFormValues((prevFormValues) => ({
+      ...prevFormValues,
+      [e.target.name]: e.target.value,
+    }))
+  }, [])
 
   const handleSubmit = () => {
     const newPiggyBank = {
