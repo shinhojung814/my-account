@@ -6,14 +6,14 @@ import { Global } from '@emotion/react'
 import globalStyles from '@styles/globalStyles'
 import Layout from '@shared/Layout'
 import Navbar from '@shared/Navbar'
-import AuthGuard from '@components/auth/AuthGuard'
+import ErrorBoundary from '@shared/ErrorBoundary'
 import { AlertContextProvider } from '@contexts/AlertContext'
 
 export default function App({
   Component,
   pageProps: { dehydratedState, session, ...pageProps },
 }: AppProps) {
-  const client = new QueryClient()
+  const client = new QueryClient({})
 
   return (
     <Layout>
@@ -21,12 +21,12 @@ export default function App({
       <SessionProvider session={session}>
         <QueryClientProvider client={client}>
           <Hydrate state={dehydratedState}>
-            <AlertContextProvider>
-              <AuthGuard>
+            <ErrorBoundary>
+              <AlertContextProvider>
                 <Navbar />
                 <Component {...pageProps} />
-              </AuthGuard>
-            </AlertContextProvider>
+              </AlertContextProvider>
+            </ErrorBoundary>
           </Hydrate>
         </QueryClientProvider>
       </SessionProvider>

@@ -18,7 +18,7 @@ function CardListPage() {
     hasNextPage = false,
     isFetching,
     fetchNextPage,
-  } = useInfiniteQuery(['cards'], ({ pageParam }) => getCards(pageParam), {
+  } = useInfiniteQuery(['card'], ({ pageParam }) => getCards(pageParam), {
     getNextPageParam: (snapshot) => {
       return snapshot.lastVisible
     },
@@ -83,7 +83,7 @@ function CardListPage() {
 export async function getServerSideProps() {
   const client = new QueryClient()
 
-  await client.prefetchInfiniteQuery(['cards'], () => getCards())
+  await client.prefetchInfiniteQuery(['card'], () => getCards())
 
   return {
     props: {

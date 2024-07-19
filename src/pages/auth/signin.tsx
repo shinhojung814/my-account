@@ -4,12 +4,13 @@ import {
   ClientSafeProvider,
   signIn,
 } from 'next-auth/react'
-import { BuiltInProviderType } from 'next-auth'
 
 import Flex from '@shared/Flex'
 import Text from '@shared/Text'
 import Button from '@shared/Button'
 import Spacing from '@shared/Spacing'
+
+type BuiltInProviderType = 'string'
 
 function SigninPage({
   providers,

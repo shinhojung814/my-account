@@ -6,6 +6,7 @@ import { motion } from 'framer-motion'
 
 import { getCard } from '@remote/card'
 import { Card } from '@models/card'
+import SEO from '@shared/SEO'
 import Top from '@shared/Top'
 import Flex from '@shared/Flex'
 import Text from '@shared/Text'
@@ -37,6 +38,11 @@ function CardDetailPage({ initialCard }: CardDetailPageProps) {
 
   return (
     <div>
+      <SEO
+        title={`${corpName} ${name}`}
+        description={subtitle}
+        image="https://cdn0.iconfinder.com/data/icons/ui-essence/32/_57ui-256.png"
+      />
       <Top title={`${corpName} ${name}`} subtitle={subtitle} />
 
       <ul>

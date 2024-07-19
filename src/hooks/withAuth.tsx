@@ -9,7 +9,11 @@ function withAuth<Props = Record<string, never>>(
     const router = useRouter()
     const { data, status } = useSession()
 
-    if (status !== 'loading' && data == null) {
+    if (status === 'loading') {
+      return null
+    }
+
+    if (data == null) {
       router.replace('/auth/signin')
 
       return null

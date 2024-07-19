@@ -6,6 +6,7 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import Flex from '@shared/Flex'
 import Text from '@shared/Text'
 import Skeleton from '@shared/Skeleton'
+import ErrorBoundary from '@shared/ErrorBoundary'
 import withSuspense from '@hooks/withSuspense'
 import useEventBanners from '@components/home/hooks/useEventBanners'
 
@@ -49,6 +50,14 @@ const bannerStyles = css`
   border-radius: 8px;
 `
 
+function WrapErrorBoundary() {
+  return (
+    <ErrorBoundary fallbackComponent={<></>}>
+      <EventBanners />
+    </ErrorBoundary>
+  )
+}
+
 export function BannerSkeleton() {
   return (
     <div style={{ padding: 24 }}>
@@ -57,6 +66,6 @@ export function BannerSkeleton() {
   )
 }
 
-export default withSuspense(EventBanners, {
+export default withSuspense(WrapErrorBoundary, {
   fallback: <BannerSkeleton />,
 })

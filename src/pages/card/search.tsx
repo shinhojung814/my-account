@@ -15,13 +15,11 @@ function SearchPage() {
   const router = useRouter()
 
   const [keyword, setKeyword] = useState('')
-
+  const inputRef = useRef<HTMLInputElement>(null)
   const debouncedKeyword = useDebounce(keyword)
 
-  const inputRef = useRef<HTMLInputElement>(null)
-
   const { data } = useQuery(
-    ['cards', debouncedKeyword],
+    ['card', debouncedKeyword],
     () => getSearchCards(debouncedKeyword),
     {
       enabled: debouncedKeyword !== '',
@@ -44,7 +42,7 @@ function SearchPage() {
       <div style={{ padding: '0 24px 12px 24px' }}>
         <Input ref={inputRef} value={keyword} onChange={handleKeyword} />
       </div>
-      {keyword !== '' && data?.length === 0 ? (
+      {debouncedKeyword !== '' && data?.length === 0 ? (
         <div style={{ display: 'flex', flexDirection: 'column', padding: 36 }}>
           <Text>입력하신 검색어와 일치하는 카드가 없습니다.</Text>
           <Spacing direction="vertical" size={4} />

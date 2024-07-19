@@ -5,6 +5,7 @@ import EventBannerAddButton from '@components/test/EventBannerAddButton'
 import CardListAddButton from '@components/test/CardListAddButton'
 import EventForm from '@components/test/EventForm'
 import TransactionForm from '@components/test/TransactionForm'
+import FaqAddButton from '@components/test/FaqAddButton'
 
 function TestPage() {
   return (
@@ -41,6 +42,16 @@ function TestPage() {
 
         <Text bold={true}>입출금 테스트</Text>
         <TransactionForm />
+
+        <Spacing
+          direction="vertical"
+          size={8}
+          backgroundColor="gray100"
+          style={{ margin: '20px 0' }}
+        />
+
+        <Text bold={true}>FAQ</Text>
+        <FaqAddButton />
       </Flex>
     </div>
   )
