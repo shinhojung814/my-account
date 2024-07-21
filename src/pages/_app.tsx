@@ -8,6 +8,7 @@ import Layout from '@shared/Layout'
 import Navbar from '@shared/Navbar'
 import ErrorBoundary from '@shared/ErrorBoundary'
 import { AlertContextProvider } from '@contexts/AlertContext'
+import AuthGuard from '@components/auth/AuthGuard'
 
 export default function App({
   Component,
@@ -23,8 +24,10 @@ export default function App({
           <Hydrate state={dehydratedState}>
             <ErrorBoundary>
               <AlertContextProvider>
-                <Navbar />
-                <Component {...pageProps} />
+                <AuthGuard>
+                  <Navbar />
+                  <Component {...pageProps} />
+                </AuthGuard>
               </AlertContextProvider>
             </ErrorBoundary>
           </Hydrate>

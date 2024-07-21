@@ -43,7 +43,7 @@ function AccountNewPage({ initialStep }: { initialStep: number }) {
               ...formValues,
               accountNumber: Date.now(),
               balance: 0,
-              status: 'READY',
+              status: 'DONE',
               userId: user?.id as string,
             } as Account
 
